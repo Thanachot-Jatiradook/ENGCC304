@@ -19,7 +19,7 @@ int arr[n]; for(int i=0;i<n;i++){
   for(int i=0;i<n;i++){if (isPrime(arr[i]))
 printf("%2d ", arr[i]); 
     else
-printf("%2s ", "#"); 
+printf("%2s ", " #"); 
     }
     printf("\n");return 0;
         }
