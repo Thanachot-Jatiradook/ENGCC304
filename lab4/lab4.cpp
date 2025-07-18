@@ -7,8 +7,10 @@ int main() {
 
     printf("Input the Employees ID:" );
     scanf("%s", Employees_ID);
+
     printf("Input the working hrs:");
     scanf("%f", &Working_Hours);
+    
     printf("Salary amount/hr:");
     scanf("%f", &Salary);
 
