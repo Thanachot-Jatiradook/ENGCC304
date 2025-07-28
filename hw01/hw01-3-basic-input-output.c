@@ -9,8 +9,8 @@
     printf("Last Name:");
     scanf("%s", Last_Name);
 
-    printf("%s ", First_Name);
-    printf("%s ", Last_Name);
+    printf("%ss ", First_Name);
+    printf("%ss ", Last_Name);
     printf("TC, RMUTL, Chiang Mai, Thailand");
     
  }
