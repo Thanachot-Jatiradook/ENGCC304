@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct Student {
+typedef struct Student {
     char Name[50];
     char ID[10];
     float ScoreSub1;
@@ -9,9 +9,21 @@ struct Student {
     float ScoreSub3;
     float ScoreSub4;
     float ScoreSub5;
-} typedef S;
+} S;
 
-// ฟังก์ชันตัดเกรด
+const char* getGrade(float score);
+void inputStudents(S students[], int size);
+void printStudents(S students[], int size);
+
+int main() {
+    S students[3];
+
+    inputStudents(students, 3);
+    printStudents(students, 3);
+
+    return 0;
+}
+
 const char* getGrade(float score) {
     if (score >= 80) return "A";
     else if (score >= 75) return "B+";
@@ -23,17 +35,15 @@ const char* getGrade(float score) {
     else return "F";
 }
 
-int main() {
-    S students[3];
+void inputStudents(S students[], int size) {
+    printf("Enter the details of %d students:\n", size);
 
-    printf("Enter the details of 3 students :\n");
-
-    for (int i = 0; i < 3; i++) {
-        printf("\nStudent %d:\n", i+1);
+    for (int i = 0; i < size; i++) {
+        printf("\nStudent %d:\n", i + 1);
         printf("Name: \n");
-        getchar(); // กัน buffer ค้างตอนอ่าน string
+        getchar();
         fgets(students[i].Name, sizeof(students[i].Name), stdin);
-        students[i].Name[strcspn(students[i].Name, "\n")] = '\0'; // ตัด \n ออก
+        students[i].Name[strcspn(students[i].Name, "\n")] = '\0';
 
         printf("ID: \n");
         fgets(students[i].ID, sizeof(students[i].ID), stdin);
@@ -50,16 +60,17 @@ int main() {
         printf("Scores in Subject 5: \n");
         scanf("%f", &students[i].ScoreSub5);
     }
+}
 
+void printStudents(S students[], int size) {
     printf("\n");
 
-    // แสดงผล
-    for (int i = 0; i < 3; i++) {
-        float avg = (students[i].ScoreSub1 + students[i].ScoreSub2 + 
-                     students[i].ScoreSub3 + students[i].ScoreSub4 + 
+    for (int i = 0; i < size; i++) {
+        float avg = (students[i].ScoreSub1 + students[i].ScoreSub2 +
+                     students[i].ScoreSub3 + students[i].ScoreSub4 +
                      students[i].ScoreSub5) / 5.0;
 
-        printf("Student %d:\n", i+1);
+        printf("Student %d:\n", i + 1);
         printf("Name: %s\n", students[i].Name);
         printf("ID: %s\n", students[i].ID);
         printf("Scores: %.0f %.0f %.0f %.0f %.0f\n",
@@ -73,6 +84,4 @@ int main() {
 
         printf("Average Scores: %.1f\n\n", avg);
     }
-
-    return 0;
 }

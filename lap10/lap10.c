@@ -7,7 +7,7 @@ int main() {
     printf("Enter word:\n");
     scanf("%s", word);
 
-    int len = strlen(word);
+    int len = strlen(word);//count word that you type
     int isPalindrome = 1;
 
     for (int i = 0; i < len / 2; i++) {
